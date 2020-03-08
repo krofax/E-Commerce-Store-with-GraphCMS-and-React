@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
-import PRODUCTS_QUERY from './product-list/index';
+import PRODUCTS_QUERY from './all-products/index';
 import Product from './Product';
 import Cart from './Cart';
 import Navbar from './Navbar';
