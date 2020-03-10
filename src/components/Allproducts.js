@@ -5,17 +5,17 @@ import Product from './Product';
 import Cart from './Cart';
 import Navbar from './Navbar';
 
-class Products extends Component {
+class Allproducts extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
       cartitems: []
     };
-    this.addItem = this.addItem.bind(this);
+
   }
 
-    addItem(item){
+    addItem = (item) => {
       this.setState({
           cartitems : this.state.cartitems.concat([item])
       });
@@ -60,4 +60,4 @@ class Products extends Component {
    };
 };
 
-export default Products;
+export default Allproducts;

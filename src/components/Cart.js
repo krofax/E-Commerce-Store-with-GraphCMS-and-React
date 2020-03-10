@@ -5,7 +5,7 @@ const Cart = ({ handleClose, show, items }) => {
 
   return (
     <div className={show ? "modal display-block" : "modal display-none"}>
-      <section className="modal-main">
+      <section className="main-modal">
         {items.map(item =>
            <div className="card" style={{width: "18rem"}}>
               <img src={item.image.url} className="card-img-top" alt="shirt"/>
