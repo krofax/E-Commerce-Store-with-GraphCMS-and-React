@@ -35,7 +35,7 @@ class Allproducts extends Component {
           <Query query={PRODUCTS_QUERY}>
            {({ loading, error, data }) => {
 
-              if (loading) return <div>Fetching Products</div>
+              if (loading) return <div>Fetching Products.....</div>
               if (error)   return <div>Error Fetching Products</div>
 
               const items = data.productses

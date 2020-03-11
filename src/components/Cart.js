@@ -12,6 +12,7 @@ const Cart = ({ handleClose, show, items }) => {
               <div className="card-body">
                 <h5 className="card-title">{item.name}</h5>
                 <h6 className="card-title">$ {item.price}</h6>
+                <h6 className="card-title">$ {item.description}</h6>
               </div>
             </div>
         )}
