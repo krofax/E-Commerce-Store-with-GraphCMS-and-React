@@ -7,9 +7,7 @@ import React from 'react';
     import * as serviceWorker from './serviceWorker';
     
     const client = new ApolloClient({
-      // uri: "https://api-euwest.graphcms.com/v1/ck7j7p7kp41f401ek8zkw1ub3/master"
-      
-      uri: "https://api-euwest.graphcms.com/v1/ck7jao72644uj01ek89yh5gqt/master"
+      uri: "<YOUR-API-FROM-GRAHCMS>"
     });
     
     ReactDOM.render(
