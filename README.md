@@ -4,7 +4,6 @@ Using [apollo-boost](https://github.com/apollographql/apollo-boost) (a [GraphQL]
 
 ## Installation
 -Ensure you change the `URI endpoint` given to you by `Graph CMS`.
--Check the  
 
 `npm`
 
