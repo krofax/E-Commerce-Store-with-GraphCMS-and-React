@@ -40,7 +40,6 @@ class Allproducts extends Component {
 
               const items = data.productses
               const itemssent = this.state.cartitems;
-              console.log('items', items)
 
               return (
                 <div>
