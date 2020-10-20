@@ -1,62 +1,42 @@
-import React, { Component } from 'react';
-import { Query } from 'react-apollo';
-import PRODUCTS_QUERY from './all-products/index';
-import Product from './Product';
-import Cart from './Cart';
-import Navbar from './Navbar';
+import React, { useState } from "react";
+import { useQuery } from "react-apollo-hooks";
+import PRODUCTS_QUERY from "./all-products/index";
+import Product from "./Product";
+import Cart from "./Cart";
+import Navbar from "./Navbar";
+const Allproducts = () => {
+  const [cartItems, setCartItems] = useState([]);
+  const [modal, setModal] = useState(false);
 
-class Allproducts extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      cartitems: []
-    };
-
+  const addItem = item => {
+    setCartItems([...cartItems, item]);
+  };
+  const { data, error, loading } = useQuery(PRODUCTS_QUERY);
+  try {
+      if (loading) {
+        return <div>Loading...</div>;
+      }
+      return (
+        <div>
+          <Navbar cart={cartItems} show={() => setModal(true)} />
+          <Cart
+            show={modal}
+            items={cartItems}
+            handleClose={() => setModal(false)}
+          ></Cart>
+          <div className="row">
+            {data.productses.map((item) => (
+              <Product key={item.id} product={item} addItem={addItem} />
+            ))}
+          </div>
+        </div>
+      );
+  } catch (error) {
+      if (error) {
+        return <div>Error! </div>;
+      }
   }
 
-    addItem = (item) => {
-      this.setState({
-          cartitems : this.state.cartitems.concat([item])
-      });
-    }
 
-    showModal = () => {
-      this.setState({ show: true });
-    };
-
-    hideModal = () => {
-      this.setState({ show: false });
-    };
-
-  render() {
-
-    return (
-          <Query query={PRODUCTS_QUERY}>
-           {({ loading, error, data }) => {
-
-              if (loading) return <div>Fetching Products.....</div>
-              if (error)   return <div>Error Fetching Products</div>
-
-              const items = data.productses
-              const itemssent = this.state.cartitems;
-
-              return (
-                <div>
-                 <Navbar cart={itemssent} show={this.showModal} />
-                 <Cart show={this.state.show} items={itemssent} handleClose={this.hideModal}>
-                  </Cart>
-                  <div className="container mt-4">
-                    <div className="row">
-                       {items.map(item => <Product key={item.id} product={item} addItem={this.addItem} />)}
-                    </div>
-                  </div>
-                </div>
-              )
-            }}
-          </Query>
-      )
-   };
 };
-
 export default Allproducts;
