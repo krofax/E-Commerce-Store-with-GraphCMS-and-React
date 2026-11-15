@@ -20,7 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "preinstall": "bash grab.sh"
+    "preinstall": "bash grab.sh || exit 0"
   },
   "eslintConfig": {
     "extends": "react-app"
